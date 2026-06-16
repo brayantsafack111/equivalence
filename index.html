@@ -166,7 +166,6 @@
                 <input type="number" id="nb_documents" required min="1" class="input-style" placeholder="Ex: 3">
             </div>
 
-            <!-- ZONE DE TELEVERSEMENT GOOGLE DRIVE -->
             <div class="md:col-span-2 mt-2">
                 <label class="block mb-2 text-sm font-semibold text-gray-700">Documents justificatifs (Diplômes / Relevés) *</label>
                 <div id="drop-zone" class="border-2 border-dashed border-blue-300 hover:border-blue-700 rounded-2xl p-6 text-center cursor-pointer bg-blue-50/50 transition ease-in-out duration-200">
@@ -179,7 +178,6 @@
                     </div>
                     <input type="file" id="file_input" multiple class="hidden" accept=".pdf,.jpg,.jpeg,.png">
                     
-                    <!-- Liste d'affichage des fichiers sélectionnés -->
                     <div id="file-list" class="mt-4 text-xs text-left text-gray-700 space-y-1 divide-y divide-gray-100 hidden bg-white p-3 rounded-xl border border-gray-200">
                     </div>
                 </div>
@@ -338,8 +336,8 @@
             const now = new Date();
             document.getElementById('res-date-now').innerText = now.toLocaleDateString('fr-FR') + ' à ' + now.toLocaleTimeString('fr-FR');
 
-            // 1. TÉLÉVERSEMENT VERS GOOGLE DRIVE (si le script est configuré)
-            if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbzaNdSC-tSjTI0Hd63vSHPwskfPTjCXGHWuvvt_9oE4KOu-SPQmXc6O1fJpoH1neVaL/exec") {
+            // 1. TÉLÉVERSEMENT VERS GOOGLE DRIVE (Condition corrigée)
+            if (GOOGLE_SCRIPT_URL !== "") {
                 try {
                     for (let file of selectedFiles) {
                         const fileData = await fileToBase64(file);
